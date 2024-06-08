@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Citas Médicas{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col text-left">
+            <a href="{% url 'ingreso' %}" class="btn btn-secondary">Volver</a>
+        </div>
+    </div>
+    <h1 class="bienvenida">Agenda una Cita Médica</h1>
+    <div class="row card-section">
+        {% for veterinaria in veterinarias %}
+        <div class="develop">
+            <img src="{{ veterinaria.imagen.url }}" class="develop-img-top" alt="{{ veterinaria.nombre }}">
+            <div class="develop-info">
+                <h3>{{ veterinaria.nombre }}</h3>
+                <p>{{ veterinaria.direccion }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h2 class="mt-5 text-center">Agendar una Cita</h2>
+    {% if messages %}
+        <div class="alert alert-success" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <br>
+    <div class="row mb-4">
+        <div class="col text-center">
+            <a href="{% url 'listar_citas' %}" class="btn btn-catblue">Citas Agendadas</a>
+        </div>
+    </div>
+    <form method="post" class="mx-auto mt-4" style="max-width: 500px;">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_veterinaria">Veterinaria</label>
+            <select name="veterinaria" class="form-control" id="id_veterinaria">
+                {% for veterinaria in form.fields.veterinaria.queryset %}
+                    <option value="{{ veterinaria.id }}">{{ veterinaria.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="id_fecha">Fecha</label>
+            <input type="date" name="fecha" class="form-control" id="id_fecha">
+        </div>
+        <div class="form-group">
+            <label for="id_hora">Hora</label>
+            <input type="time" name="hora" class="form-control" id="id_hora">
+        </div>
+        <button type="submit" class="btn btn-catblue btn-block">Agendar Cita</button>
+    </form>
+</div>
+{% endblock %}

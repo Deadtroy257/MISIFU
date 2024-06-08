@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bienvenido a MISIFU{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="display-4">Bienvenido a MISIFU</h1>
+    <p class="lead">¿Qué deseas realizar hoy? <span role="img" aria-label="emoji">🐶</span></p>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/citas_agendadas.jpg' %}" class="card-img-top" alt="Citas Médicas">
+                <div class="card-body">
+                    <h5 class="card-title">Citas Médicas</h5>
+                    <p class="card-text">Agenda una cita médica.</p>
+                    <a href="{% url 'citas_medicas' %}" class="btn btn-catblue btn-block mt-3">Ir a Citas Médicas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/tienda.jpg' %}" class="card-img-top" alt="Tienda">
+                <div class="card-body">
+                    <h5 class="card-title">Tienda</h5>
+                    <p class="card-text">Explora nuestra tienda en línea.</p>
+                    <a href="{% url 'tienda' %}" class="btn btn-catblue btn-block mt-3">Ir a Tienda</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/tips_de_cuidado.jpg' %}" class="card-img-top" alt="Tips de Cuidado">
+                <div class="card-body">
+                    <h5 class="card-title">Tips de Cuidado</h5>
+                    <p class="card-text">Consejos de cuidado de tu mascota.</p>
+                    <a href="{% url 'tips_cuidado' %}" class="btn btn-catblue btn-block mt-3">Ir a Tips de Cuidado</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

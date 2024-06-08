@@ -1,0 +1,8 @@
+/* static/css/custom.css */
+.navbar-nav .nav-link, .navbar-brand, .navbar-toggler-icon {
+    font-size: 12rem; /* Ajusta el tamaño de la fuente según sea necesario */
+}
+
+.dropdown-menu a {
+    font-size: 1.2rem; /* Ajusta el tamaño de la fuente de los elementos del menú desplegable */
+}

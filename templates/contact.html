@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contáctenos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Contáctenos</h3>
+                    <p class="text-center">Si tienes alguna pregunta, comentario o sugerencia, no dudes en ponerte en contacto con nosotros a través del siguiente formulario.</p>
+                    {% if success %}
+                        <div class="alert alert-success" role="alert">
+                            ¡Tu mensaje ha sido enviado con éxito!
+                        </div>
+                    {% endif %}
+                    <form method="post" action="{% url 'contact' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="correo" class="form-label">Correo Electrónico:</label>
+                            <input type="email" class="form-control" id="correo" name="correo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">Mensaje:</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="3" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn-catblue btn-block mt-3">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

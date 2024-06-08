@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sobre Nosotros{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Sobre Nosotros</h2>
+    <p class="text-center">MISIFU, es una plataforma creada para satisfacer las diferentes necesidades de las mascotas, somos un equipo apasionado por las mascotas y el desarrollo de soluciones tecnológicas.</p>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="develop card text-center no-border">
+                <img src="{% static 'images/Marce.jpg' %}" class="card-img-top" alt="Developer 1">
+                <div class="overlay card-body">
+                    <h5 class="card-title">Marcela Lozano </h5>
+                    <p class="card-text">Estudiante Ingeniera de Software, Frontend Developer</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="develop card text-center no-border">
+                <img src="{% static 'images/diego.jpg' %}" class="card-img-top" alt="Developer 2">
+                <div class="overlay card-body">
+                    <h5 class="card-title">Diego Castro</h5>
+                    <p class="card-text">Estudiante Ingeniera de Software, FullStack Developer</p>
+                </div>
+            </div>
+        </div>
+        {% comment %} <div class="col-md-4">
+            <div class="develop card text-center no-border">
+                <img src="{% static 'images/jhoan.jpg' %}" class="card-img-top" alt="Developer 3">
+                <div class="overlay card-body">
+                    <h5 class="card-title">Jhoan Cupitre</h5>
+                    <p class="card-text">Estudiante Ingeniera de Software, Frontend Developer</p>
+                </div>
+            </div>
+        </div> {% endcomment %}
+    </div>
+</div>
+{% endblock %}

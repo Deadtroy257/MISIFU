@@ -1,0 +1,33 @@
+<!-- accounts/templates/accounts/signup.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Regístrate{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">¡Regístrate!</legend>
+                    {{ form.as_p }}
+                </fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-info">Crear cuenta</button>
+                </div>
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    ¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a>
+                </small>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'images/cat.jpg' %}" alt="Cat Image" class="img-fluid" style="width: 120%; height: 90%;">
+        </div>
+    </div>
+</div>
+{% endblock %}
+

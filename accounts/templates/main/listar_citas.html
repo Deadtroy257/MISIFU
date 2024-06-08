@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Citas Agendadas{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="bienvenida">Citas Agendadas</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="row mb-4">
+        <div class="col text-left">
+            <a href="{% url 'citas_medicas' %}" class="btn btn-secondary">Volver</a>
+        </div>
+    </div>
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Veterinaria</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cita in citas %}
+            <tr>
+                <td>{{ cita.veterinaria.nombre }}</td>
+                <td>{{ cita.fecha }}</td>
+                <td>{{ cita.hora }}</td>
+                <td>
+                    <form method="post" action="{% url 'cancelar_cita' cita.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Cancelar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

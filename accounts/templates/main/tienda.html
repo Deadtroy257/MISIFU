@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Tienda{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="bienvenida">Tienda</h1>
+    <div class="row mb-4">
+        <div class="col text-left">
+            <a href="{% url 'ingreso' %}" class="btn btn-secondary">Volver</a>
+        </div>
+        <div class="col text-right">
+            <a href="{% url 'ver_carrito' %}" class="btn btn-catblue">Ver Carrito</a>
+        </div>
+    </div>
+    <div class="row">
+        {% for producto in productos %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ producto.nombre }}</h5>
+                    <p class="card-text">{{ producto.descripcion }}</p>
+                    <p class="card-text" style="font-weight: bold;">${{ producto.precio }}</p>
+                    {% if producto.id in productos_en_carrito %}
+                        {% for key, value in productos_en_carrito.items %}
+                            {% if producto.id == key%}
+                                <p class="card-text text-success">En carrito: {{ value }}</p>
+                            {% endif%}
+                        {% endfor %}
+                    {% endif %}
+                    <a href="{% url 'agregar_al_carrito' producto.id %}" class="btn btn-catblue">Agregar al Carrito</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

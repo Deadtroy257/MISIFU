@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Cancelar Cita{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="bienvenida">Cancelar Cita</h1>
+    <p>¿Estás seguro que deseas cancelar la cita con {{ cita.veterinaria.nombre }} el {{ cita.fecha }} a las {{ cita.hora }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Cancelar</button>
+        <a href="{% url 'listar_citas' %}" class="btn btn-secondary">Volver</a>
+    </form>
+</div>
+{% endblock %}
