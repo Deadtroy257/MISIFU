@@ -14,7 +14,7 @@ echo "Contents of the project directory:"
 ls -l
 
 # Convert static asset files
-#python manage.py collectstatic --noinput
+python manage.py collectstatic --noinput
 
 # Apply any outstanding database migrations
 python manage.py migrate
