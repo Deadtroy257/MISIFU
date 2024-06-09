@@ -5,6 +5,7 @@ from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.contrib import messages
 from .models import Veterinaria, Producto, TipDeCuidado, CitaMedica, Producto, Carrito, CarritoProducto
 from .forms import CitaMedicaForm 
+from django.templatetags.static import static
 
 def home_view(request):
     return render(request, 'home.html')
@@ -85,6 +86,8 @@ def citas_medicas(request):
         form = CitaMedicaForm()
     
     veterinarias = Veterinaria.objects.all()
+    for veterinaria in veterinarias:
+        veterinaria.image_url = static(f"images/veterinaria{veterinaria.id}.jpg")
     return render(request, 'main/citas_medicas.html', {'veterinarias': veterinarias, 'form': form})
 
 @login_required
@@ -104,6 +107,8 @@ def cancelar_cita(request, cita_id):
 @login_required
 def tienda(request):
     productos = Producto.objects.all()
+    for producto in productos:
+        producto.image_url = static(f"images/producto{producto.id}.jpg")
     carrito = None
     productos_en_carrito = {}
     
@@ -169,4 +174,6 @@ def realizar_compra(request):
 @login_required
 def tips_cuidado(request):
     tips = TipDeCuidado.objects.all()
+    for tip in tips:
+        tip.image_url = static(f"images/tip{tip.id}.jpeg")
     return render(request, 'main/tips_cuidado.html', {'tips': tips})
