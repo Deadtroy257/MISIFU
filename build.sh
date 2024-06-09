@@ -12,3 +12,11 @@ python manage.py collectstatic --noinput
 
 # Apply any outstanding database migrations
 python manage.py migrate
+
+# Set the environment variables for the superuser
+export DJANGO_SUPERUSER_USERNAME=admin
+export DJANGO_SUPERUSER_EMAIL=admin@correo.com
+export DJANGO_SUPERUSER_PASSWORD=adminpassword
+
+# Create the superuser
+python manage.py createsuperuser --noinput
